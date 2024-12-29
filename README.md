@@ -17,3 +17,6 @@ docker run -p 49:4449 -p 443:8000 -e RATCHET_PAWL_MASKING_KEY=1234 ratchet-cycle
 ```
 
 And navigate to https://localhost which will have a self-signed hosted HTTPS site for you to administer `ratchet`.
+
+## Architectural Overview
+`ratchet-pawl` writes out a file called ratchet_db.redb. That file is encrypted using the AES256 key written in `RATCHET_PAWL_MASKING_KEY`, so if you intend to recover it then you could ensure that the same key is used from one deployment to another; for example if a volume-container architectural separation is desired.
