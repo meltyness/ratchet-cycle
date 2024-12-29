@@ -1,9 +1,20 @@
-FROM rust:1.83-bullseye
+# Stage 1: Build and Prune
+FROM rust:1-slim-bookworm AS builder
 
 RUN apt-get -y update && apt-get install -y npm
-
 RUN cargo install --git https://github.com/meltyness/ratchet-pawl
 RUN cargo install --git https://github.com/meltyness/ratchet
+
+RUN find /usr/local/cargo -path "*/node_modules/*" -delete
+
+# Stage 2: Install and Launch
+FROM debian:bookworm-slim
+
+COPY --from=builder /usr/local/cargo /usr/local/cargo
+
+ENV PATH="$PATH:/usr/local/cargo/bin"
+# Each of the *_cmd depends on curl.
+RUN apt-get -y update && apt-get install -y curl
 
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
 ENV ROCKET_ADDRESS=0.0.0.0
