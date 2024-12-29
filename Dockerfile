@@ -2,8 +2,8 @@ FROM rust:1.83-bullseye
 
 RUN apt-get -y update && apt-get install -y npm
 
-RUN cargo install --git https://github.com/meltyness/ratchet-pawl --branch devel/long-polling
-RUN cargo install --git https://github.com/meltyness/ratchet --branch devel/long-polling
+RUN cargo install --git https://github.com/meltyness/ratchet-pawl
+RUN cargo install --git https://github.com/meltyness/ratchet
 
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
 ENV ROCKET_ADDRESS=0.0.0.0
