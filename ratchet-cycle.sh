@@ -13,7 +13,6 @@ do
     read -r line < /dev/fd/${PAWL[0]}
     if [[ "$line" == *"Api-Key: "* ]]; then
         RATCHET_PAWL_API_KEY=$(echo "$line" | awk -F'Api-Key: ' '{print $2}')
-        echo "Found key: $RATCHET_PAWL_API_KEY"
         break
     else
         echo "Looking at $line"
