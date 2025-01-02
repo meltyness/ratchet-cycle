@@ -12,6 +12,9 @@ This is some glue code / an installer / deployment model for:
 - [ratchet-pawl frontend](https://github.com/meltyness/ratchet-pawl)
 - [ratchet / TACACS+ protocol](https://github.com/meltyness/ratchet)
 
+## Screenshots
+![image](https://github.com/user-attachments/assets/68ec4789-749c-4f8e-8e71-4ed594d602c7)
+
 ## Building 
 The docker image is built simply with a docker command like this this:
 ``` bash
