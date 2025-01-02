@@ -7,6 +7,11 @@
 ## Available on Dockerhub
 https://hub.docker.com/r/meltyness/ratchet-cycle
 
+This is some glue code / an installer / deployment model for:
+
+- [ratchet-pawl frontend](https://github.com/meltyness/ratchet-pawl)
+- [ratchet / TACACS+ protocol](https://github.com/meltyness/ratchet)
+
 ## Building 
 The docker image is built simply with a docker command like this this:
 ``` bash
