@@ -22,16 +22,5 @@ done
 
 # echo "Fetched API Key: ${RATCHET_PAWL_API_KEY}"
 export RATCHET_PAWL_API_KEY
-coproc RTCH { ratchet; }
 
-while true; do
-    read -t 0.001 -r pawlline < /dev/fd/${PAWL[0]}
-    if [ $? == 0 ]; then
-        echo $pawlline
-    fi
-    read -t 0.001 -r rtchline < /dev/fd/${RTCH[0]}
-    if [ $? == 0 ]; then
-        echo $rtchline
-    fi
-    sleep 1s
-done
+ ratchet & cat - < /dev/fd/${PAWL[0]}
