@@ -25,7 +25,6 @@ docker build --no-cache -t ratchet-cycle .
 Once `ratchet-cycle` is installed, a container can be launched with.
 ``` bash
 # Replace RATCHET_PAWL_MASKING_KEY with something private, non-obvious, and permanent.
-# If using docker via Powershell, replace \ with ` for multiline separator
 docker run \                                 # Command docker to open a new container
 -p 49:4449 \                                 # Exposing the container's port 4449 as port 49 on the host
 -p 443:8000 \                                # Exposing the container's port 8000 as port 443 on the host
@@ -35,6 +34,16 @@ docker run \                                 # Command docker to open a new cont
 meltyness/ratchet-cycle
 
 # Monitor output for the initial username and password.
+```
+Or in powershell:
+``` powershell
+docker run `
+-p 49:4449 `
+-p 443:8000 `
+-e RATCHET_PAWL_MASKING_KEY=$MY_SECURE_KEY `
+--memory 1G `
+--memory-swap 1G `
+meltyness/ratchet-cycle
 ```
 
 And navigate to https://localhost which will have a self-signed hosted HTTPS site for you to administer `ratchet`.
