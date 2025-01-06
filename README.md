@@ -25,7 +25,14 @@ docker build --no-cache -t ratchet-cycle .
 Once `ratchet-cycle` is installed, a container can be launched with.
 ``` bash
 # Replace RATCHET_PAWL_MASKING_KEY with something private, non-obvious, and permanent.
-docker run -p 49:4449 -p 443:8000 -e RATCHET_PAWL_MASKING_KEY=1234 ratchet-cycle
+# If using docker on windows, replace \ with ` for multiline separator
+docker run \                                 # Command docker to open a new container
+-p 49:4449 \                                 # Exposing the container's port 4449 as port 49 on the host
+-p 443:8000 \                                # Exposing the container's port 8000 as port 443 on the host
+-e RATCHET_PAWL_MASKING_KEY=$MY_SECURE_KEY \ # Using a secure key stored in a shell variable, which will be placed into the container environment every start.
+--memory 1G \                                # Permitting at most 1G of RAM
+--memory-swap 1G \                           # Forbidding any swap exceeding this memory constraint. https://docs.docker.com/engine/containers/resource_constraints/#--memory-swap-details
+meltyness/ratchet-cycle
 
 # Monitor output for the initial username and password.
 ```
