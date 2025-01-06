@@ -17,7 +17,7 @@ ENV PATH="$PATH:/usr/local/cargo/bin"
 RUN apt-get -y update && apt-get install -y curl
 
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
-ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_ADDRESS=::
 ENV ROCKET_PORT=8000
 ENV ROCKET_TLS='{certs="/cert.pem",key="/key.pem"}'
 
