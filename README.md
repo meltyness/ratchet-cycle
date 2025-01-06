@@ -25,7 +25,7 @@ docker build --no-cache -t ratchet-cycle .
 Once `ratchet-cycle` is installed, a container can be launched with.
 ``` bash
 # Replace RATCHET_PAWL_MASKING_KEY with something private, non-obvious, and permanent.
-# If using docker on windows, replace \ with ` for multiline separator
+# If using docker via Powershell, replace \ with ` for multiline separator
 docker run \                                 # Command docker to open a new container
 -p 49:4449 \                                 # Exposing the container's port 4449 as port 49 on the host
 -p 443:8000 \                                # Exposing the container's port 8000 as port 443 on the host
