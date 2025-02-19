@@ -1,8 +1,19 @@
 #!/bin/bash
 
 if [ ! -e "/key.pem" ]; then
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=localhost"
+    openssl genrsa -passout pass:$RATCHET_PAWL_MASKING_KEY -aes256 -out key.pem 4096
+    openssl req -x509 \
+        -new \
+        -key key.pem -passin pass:$RATCHET_PAWL_MASKING_KEY \
+        -out cert.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=localhost" \
+        -addext "subjectAltName = DNS:localhost,IP:127.0.0.1,IP:::1"
 fi
+
+if [! -e "/fake_key.pem" ]; then
+    mkfifo "fake_key.pem"
+fi
+
+openssl rsa -in key.pem -passin pass:$RATCHET_PAWL_MASKING_KEY 2>/dev/null > fake_key.pem &
 
 coproc PAWL { ratchet-pawl; }
 
