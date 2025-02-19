@@ -19,7 +19,7 @@ RUN apt-get -y update && apt-get install -y curl
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
 ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=8000
-ENV ROCKET_TLS='{certs="/cert.pem",key="/key.pem"}'
+ENV ROCKET_TLS='{certs="/cert.pem",key="/fake_key.pem"}'
 
 # https://github.com/meltyness/ratchet/blob/main/README.md#building--running--configuring
 ENV RATCHET_CUST_HOSTPORT="[::]:4449"
