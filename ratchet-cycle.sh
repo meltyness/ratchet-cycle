@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Apparently there is disagreement about the file
+# perms depending on the build context; they ought to be +x
+chmod +x *.sh
+
 if [ ! -e "/key.pem" ]; then
     openssl genrsa -passout pass:$RATCHET_PAWL_MASKING_KEY -aes256 -out key.pem 4096
     openssl req -x509 \
