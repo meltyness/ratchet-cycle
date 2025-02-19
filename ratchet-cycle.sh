@@ -13,7 +13,7 @@ if [ ! -e "/key.pem" ]; then
         -addext "subjectAltName = DNS:localhost,IP:127.0.0.1,IP:::1"
 fi
 
-if [! -e "/fake_key.pem" ]; then
+if [ ! -e "/fake_key.pem" ]; then
     mkfifo "fake_key.pem"
 fi
 
