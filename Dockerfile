@@ -2,8 +2,8 @@
 FROM rust:1-slim-bookworm AS builder
 
 RUN apt-get -y update && apt-get install -y npm
-RUN cargo install --git https://github.com/meltyness/ratchet-pawl --branch devel/lockstep-to-serial
-RUN cargo install --git https://github.com/meltyness/ratchet --branch devel/add-serial-polling
+RUN cargo install --git https://github.com/meltyness/ratchet-pawl
+RUN cargo install --git https://github.com/meltyness/ratchet
 
 RUN find /usr/local/cargo -path "*/node_modules/*" -delete
 
