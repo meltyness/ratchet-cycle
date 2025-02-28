@@ -56,5 +56,4 @@ On first launch, an API key is intialized and written into the embedded database
 Speaking of which, `ratchet` associates to `pawl` through the following 3 interfaces:
 - `clients` which lists TACACS+ client networks and their associated keys
 - `creds` which lists authenticateable users, and the hash of their password
-- `long-poll` which waits until clients or creds contain interesting changes, which `ratchet` then scoops up, at its leisure.
-  - This means that there's a max rate at which `clients` and `creds` can reasonably be updated, but it's probably fine, don't worry about it.
+- `long-poll` which waits until clients or creds contain interesting changes, which `ratchet` then scoops up, at its leisure. There's also an update serial that can be exchanged so no updates are missed. 
