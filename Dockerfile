@@ -33,6 +33,7 @@ EXPOSE 4449
 ADD "./ratchet-cycle.sh" "/"
 ADD "./clients_cmd.sh" "/"
 ADD "./creds_cmd.sh" "/"
+ADD "./user_policy_cmd.sh" "/"
 ADD "./poll_cmd.sh" "/"
 
 CMD ["/bin/bash", "/ratchet-cycle.sh"]
