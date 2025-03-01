@@ -25,6 +25,7 @@ ENV ROCKET_TLS='{certs="/cert.pem",key="/fake_key.pem"}'
 ENV RATCHET_CUST_HOSTPORT="[::]:4449"
 ENV RATCHET_READ_CLIENTS="/clients_cmd.sh"
 ENV RATCHET_READ_CREDS="/creds_cmd.sh"
+ENV RATCHET_USER_CMD_POLICY="/user_policy_cmd.sh"
 ENV RATCHET_LONG_POLL="/poll_cmd.sh"
 EXPOSE 8000
 EXPOSE 4449
