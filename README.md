@@ -14,6 +14,7 @@ This is some glue code / an installer / deployment model for:
 
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/68ec4789-749c-4f8e-8e71-4ed594d602c7)
+![image](https://github.com/user-attachments/assets/c025f59e-3174-434c-9c65-2c3613c10fa6)
 
 ## Building 
 The docker image is built simply with a docker command like this:
