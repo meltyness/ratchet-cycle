@@ -1,10 +1,17 @@
 #!/bin/bash
 
+cd /ratchet
+
 # Apparently there is disagreement about the file
 # perms depending on the build context; they ought to be +x
 chmod +x *.sh
+useradd -M -N -s /bin/bash ratchet
+chown ratchet ./
+chown ratchet ./*
+chmod +rw ./
+su -m ratchet
 
-if [ ! -e "/key.pem" ]; then
+if [ ! -e "key.pem" ]; then
     openssl genrsa -passout pass:$RATCHET_PAWL_MASKING_KEY -aes256 -out key.pem 4096
     openssl req -x509 \
         -new \
@@ -13,7 +20,7 @@ if [ ! -e "/key.pem" ]; then
         -addext "subjectAltName = DNS:localhost,IP:127.0.0.1,IP:::1"
 fi
 
-if [ ! -e "/fake_key.pem" ]; then
+if [ ! -e "fake_key.pem" ]; then
     mkfifo "fake_key.pem"
 fi
 
