@@ -19,21 +19,21 @@ RUN apt-get -y update && apt-get install -y curl netcat-openbsd
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
 ENV ROCKET_ADDRESS=::
 ENV ROCKET_PORT=8000
-ENV ROCKET_TLS='{certs="/cert.pem",key="/fake_key.pem"}'
+ENV ROCKET_TLS='{certs="/ratchet/cert.pem",key="/ratchet/fake_key.pem"}'
 
 # https://github.com/meltyness/ratchet/blob/main/README.md#building--running--configuring
 ENV RATCHET_CUST_HOSTPORT="[::]:4449"
-ENV RATCHET_READ_CLIENTS="/clients_cmd.sh"
-ENV RATCHET_READ_CREDS="/creds_cmd.sh"
-ENV RATCHET_USER_CMD_POLICY="/user_policy_cmd.sh"
-ENV RATCHET_LONG_POLL="/poll_cmd.sh"
+ENV RATCHET_READ_CLIENTS="/ratchet/clients_cmd.sh"
+ENV RATCHET_READ_CREDS="/ratchet/creds_cmd.sh"
+ENV RATCHET_USER_CMD_POLICY="/ratchet/user_policy_cmd.sh"
+ENV RATCHET_LONG_POLL="/ratchet/poll_cmd.sh"
 EXPOSE 8000
 EXPOSE 4449
 
-ADD "./ratchet-cycle.sh" "/"
-ADD "./clients_cmd.sh" "/"
-ADD "./creds_cmd.sh" "/"
-ADD "./user_policy_cmd.sh" "/"
-ADD "./poll_cmd.sh" "/"
+ADD "./ratchet-cycle.sh" "/ratchet/"
+ADD "./clients_cmd.sh" "/ratchet/"
+ADD "./creds_cmd.sh" "/ratchet/"
+ADD "./user_policy_cmd.sh" "/ratchet/"
+ADD "./poll_cmd.sh" "/ratchet/"
 
-CMD ["/bin/bash", "/ratchet-cycle.sh"]
+CMD ["/bin/bash", "/ratchet/ratchet-cycle.sh"]
