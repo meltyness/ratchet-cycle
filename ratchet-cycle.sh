@@ -23,7 +23,7 @@ coproc PAWL { ratchet-pawl; }
 
 RATCHET_PAWL_API_KEY=""
 
-NUM_RUNS=10
+NUM_RUNS=300
 
 for i in $(seq 0 $NUM_RUNS)
 do
@@ -35,6 +35,10 @@ do
         echo "Looking at $line"
         continue
     fi
+done
+
+while ! nc -z ::1 8000; do
+    sleep 1;
 done
 
 # echo "Fetched API Key: ${RATCHET_PAWL_API_KEY}"
