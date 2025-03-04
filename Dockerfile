@@ -14,7 +14,7 @@ COPY --from=builder /usr/local/cargo /usr/local/cargo
 
 ENV PATH="$PATH:/usr/local/cargo/bin"
 # Each of the *_cmd depends on curl.
-RUN apt-get -y update && apt-get install -y curl
+RUN apt-get -y update && apt-get install -y curl netcat-openbsd
 
 # https://rocket.rs/guide/v0.5/configuration/#environment-variables
 ENV ROCKET_ADDRESS=::
